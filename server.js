@@ -1,4 +1,5 @@
 const express = require('express')
+// const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const winston = require('winston');
@@ -8,6 +9,7 @@ const winston = require('winston');
 const app = express()
 app.use(cors())
 app.use(helmet())
+// app.use(morgan('combined'))
 app.use(express.json()) //you no longer need body-parser package...it comes built into expressJS now
 
 app.get('/', (req, res) => res.send('Hello World!'))
