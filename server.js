@@ -12,7 +12,16 @@ app.use(helmet())
 // app.use(morgan('combined'))
 app.use(express.json()) //you no longer need body-parser package...it comes built into expressJS now
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => {
+  res.cookie('session', '1', { httpOnly: true })
+  res.cookie('session', '1', { secure: true })
+  // Prevents CSRF with security policy
+  res.set({
+    'Content-Security-Policy': "script-src 'self' 'https://apis.google.com'"
+  })
+  res.send('Hello World!')
+})
+
 
 app.post('/secret', (req, res) => {
   const { userInput } = req.body;
