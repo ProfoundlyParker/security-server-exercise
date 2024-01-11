@@ -8,6 +8,7 @@ const winston = require('winston');
 
 const app = express()
 app.use(cors())
+// Gives you secure headers - intercepts HTTP requests and modifies the headers
 app.use(helmet())
 // app.use(morgan('combined'))
 app.use(express.json()) //you no longer need body-parser package...it comes built into expressJS now
